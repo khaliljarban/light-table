@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light table</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/demo.css">
+
+
+    <script src="js/light-table.js" ></script>
+</head>
+<body>
+
+    <div class="demo">
+        <h1>Light table demo</h1>
+                
+        <p>Light table is a class for native Javascript. It is a highly flexible tool, <br/>
+            built upon the foundations of progressive enhancement, 
+            that adds all of these advanced features to any HTML table.
+        </p>
+
+                
+        <p>Light table is a class for native Javascript. It is a highly flexible tool, <br/>
+            built upon the foundations of progressive enhancement, 
+            that adds all of these advanced features to any HTML table.
+        </p>
+
+
+                
+        <p>Light table is a class for native Javascript. It is a highly flexible tool, <br/>
+            built upon the foundations of progressive enhancement, 
+            that adds all of these advanced features to any HTML table.
+        </p>
+
+                
+        <p>Light table is a class for native Javascript. It is a highly flexible tool, <br/>
+            built upon the foundations of progressive enhancement, 
+            that adds all of these advanced features to any HTML table.
+        </p>
+
+                
+        <p>Light table is a class for native Javascript. It is a highly flexible tool, <br/>
+            built upon the foundations of progressive enhancement, 
+            that adds all of these advanced features to any HTML table.
+        </p>
+        <div class="demo-r">
+            <h2>Simple usage</h2>
+            <table id="table1" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Birth date</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1001</td>
+                        <td class="lt-exclude-search">Ernst</td>
+                        <td>Handel</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1002</td>
+                        <td>John</td>
+                        <td>Shipperd</td>
+                        <td>05/25/2020</td>
+                        <td>60</td>
+                    </tr>
+                    <tr>
+                        <td>1003</td>
+                        <td>Antonio</td>
+                        <td>Marty</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1004</td>
+                        <td>Bekke</td>
+                        <td>Savoi</td>
+                        <td>09/05/2021</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1005</td>
+                        <td>Beni</td>
+                        <td>Camiras</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1006</td>
+                        <td>Alberto</td>
+                        <td>Del Rosi</td>
+                        <td>09/25/1999</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>1007</td>
+                        <td>Marty</td>
+                        <td>Becasso</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1008</td>
+                        <td>Tobias</td>
+                        <td>Linus</td>
+                        <td>12/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1009</td>
+                        <td>Alfred</td>
+                        <td>Andres</td>
+                        <td>09/25/2008</td>
+                        <td>99</td>
+                    </tr>
+                    <tr>
+                        <td>1010</td>
+                        <td>Ernst</td>
+                        <td>Maria</td>
+                        <td>09/15/2020</td>
+                        <td>86</td>
+                    </tr>
+                    <tr>
+                        <td>1011</td>
+                        <td>Giovanni</td>
+                        <td>Tannamuri</td>
+                        <td>09/25/2023</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1012</td>
+                        <td>Ronald</td>
+                        <td>Rovelli</td>
+                        <td>09/11/2020</td>
+                        <td>55</td>
+                    </tr>
+                    <tr>
+                        <td>1013</td>
+                        <td>Sam</td>
+                        <td>Hany</td>
+                        <td>09/11/2020</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>1014</td>
+                        <td>Merphy</td>
+                        <td>Fandom</td>
+                        <td>09/25/2019</td>
+                        <td>99</td>
+                    </tr>
+                </tbody>
+            </table>
+            <script>
+                 new LightTable({
+                    selector : '#table1',
+                    search : true,
+                    pagination : true,
+                    stickyHead : true,
+                    theme : 'blue',
+                });
+    
+            </script>
+        </div>
+
+        
+        <div class="demo-r">
+            <h2>Black theme</h2>
+            <table id="table2" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Birth date</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1001</td>
+                        <td class="lt-exclude-search">Ernst</td>
+                        <td>Handel</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1002</td>
+                        <td>John</td>
+                        <td>Shipperd</td>
+                        <td>05/25/2020</td>
+                        <td>60</td>
+                    </tr>
+                    <tr>
+                        <td>1003</td>
+                        <td>Antonio</td>
+                        <td>Marty</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1004</td>
+                        <td>Bekke</td>
+                        <td>Savoi</td>
+                        <td>09/05/2021</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1005</td>
+                        <td>Beni</td>
+                        <td>Camiras</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1006</td>
+                        <td>Alberto</td>
+                        <td>Del Rosi</td>
+                        <td>09/25/1999</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>1007</td>
+                        <td>Marty</td>
+                        <td>Becasso</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1008</td>
+                        <td>Tobias</td>
+                        <td>Linus</td>
+                        <td>12/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1009</td>
+                        <td>Alfred</td>
+                        <td>Andres</td>
+                        <td>09/25/2008</td>
+                        <td>99</td>
+                    </tr>
+                    <tr>
+                        <td>1010</td>
+                        <td>Ernst</td>
+                        <td>Maria</td>
+                        <td>09/15/2020</td>
+                        <td>86</td>
+                    </tr>
+                    <tr>
+                        <td>1011</td>
+                        <td>Giovanni</td>
+                        <td>Tannamuri</td>
+                        <td>09/25/2023</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1012</td>
+                        <td>Ronald</td>
+                        <td>Rovelli</td>
+                        <td>09/11/2020</td>
+                        <td>55</td>
+                    </tr>
+                    <tr>
+                        <td>1013</td>
+                        <td>Sam</td>
+                        <td>Hany</td>
+                        <td>09/11/2020</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>1014</td>
+                        <td>Merphy</td>
+                        <td>Fandom</td>
+                        <td>09/25/2019</td>
+                        <td>99</td>
+                    </tr>
+                </tbody>
+            </table>
+            <script>
+                 new LightTable({
+                    selector : '#table2',
+                    search : true,
+                    pagination : true,
+                    stickyHead : true,
+                    theme : 'black',
+                });
+    
+            </script>
+        </div>
+
+        
+        <div class="demo-r">
+            <h2>Sort columns:</h2>
+            <table id="table3" >
+                <thead>
+                    <tr>
+                        <th data-sortable="yes">ID</th>
+                        <th data-sortable="yes">First Name</th>
+                        <th>Last Name</th>
+                        <th>Birth date</th>
+                        <th data-sortable="yes">Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1001</td>
+                        <td>Ernst</td>
+                        <td>Handel</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1002</td>
+                        <td>John</td>
+                        <td>Shipperd</td>
+                        <td>05/25/2020</td>
+                        <td>60</td>
+                    </tr>
+                    <tr>
+                        <td>1003</td>
+                        <td>Antonio</td>
+                        <td>Marty</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1004</td>
+                        <td>Bekke</td>
+                        <td>Savoi</td>
+                        <td>09/05/2021</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1005</td>
+                        <td>Beni</td>
+                        <td>Camiras</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1006</td>
+                        <td>Alberto</td>
+                        <td>Del Rosi</td>
+                        <td>09/25/1999</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>1007</td>
+                        <td>Marty</td>
+                        <td>Becasso</td>
+                        <td>09/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1008</td>
+                        <td>Tobias</td>
+                        <td>Linus</td>
+                        <td>12/25/2020</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1009</td>
+                        <td>Alfred</td>
+                        <td>Andres</td>
+                        <td>09/25/2008</td>
+                        <td>99</td>
+                    </tr>
+                    <tr>
+                        <td>1010</td>
+                        <td>Ernst</td>
+                        <td>Maria</td>
+                        <td>09/15/2020</td>
+                        <td>86</td>
+                    </tr>
+                    <tr>
+                        <td>1011</td>
+                        <td>Giovanni</td>
+                        <td>Tannamuri</td>
+                        <td>09/25/2023</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>1012</td>
+                        <td>Ronald</td>
+                        <td>Rovelli</td>
+                        <td>09/11/2020</td>
+                        <td>55</td>
+                    </tr>
+                    <tr>
+                        <td>1013</td>
+                        <td>Sam</td>
+                        <td>Hany</td>
+                        <td>09/11/2020</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>1014</td>
+                        <td>Merphy</td>
+                        <td>Fandom</td>
+                        <td>09/25/2019</td>
+                        <td>99</td>
+                    </tr>
+                </tbody>
+            </table>
+            <script>
+                 new LightTable({
+                    selector : '#table3',
+                    search : true,
+                    pagination : true,
+                    stickyHead : true,
+                    theme : 'black',
+                });
+    
+            </script>
+        </div>
+ 
+
+
+
+    </div>
+    
+</body>
+</html>
