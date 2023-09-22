@@ -31,11 +31,11 @@ Create html table using this format
 <table id="table3" >
     <thead>
         <tr>
-            <th data-sortable="yes">ID</th>
-            <th data-sortable="yes">First Name</th>
+            <th>ID</th>
+            <th>First Name</th>
             <th>Last Name</th>
             <th>Birth date</th>
-            <th data-sortable="yes">Grade</th>
+            <th>Grade</th>
         </tr>
     </thead>
     <tbody>
@@ -69,12 +69,21 @@ Call the library
 ```javascript
    new LightTable({
         selector : '#table3',
-        search : true,
-        pagination : true,
-        stickyHead : true,
         theme : 'black',
     });
 ```
+
+
+## Options
+| Key  | type | default value | description |
+| ------------- | ------------- | ------------- | ------------- |
+| selector  | String  | table  | CSS selector e.g. #table,.table,table, div table  |
+| search  | Boolean  | false  | Allow show & hide the search |
+| stickyHead  | Boolean  | false  | Makes table's header positioned accordiong to the normal flow of the document |
+| pagination  | Boolean  | false  | Allow table pagenation |
+| paginationPerPage  | Number  | 10  | Controll how many items shown per page |
+| theme  | String  | black  | Choosing theme, Available black, blue |
+| labels  | Object  | {}  | Strings translations see below available strings |
 
 ## Contributing
 
