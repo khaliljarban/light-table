@@ -8,14 +8,26 @@ class LightTable {
             selector : 'table',  // string
             stickyHead : false, // boolean true | false
             search : false, // boolean true | false
+            
             pagination :false,
             paginationPerPage :10,
             theme : 'black', //string
 
+
+            print :false,
+            exportCSV :false,
+            exportCSVFileName :'',
+
+
+
             labels : {
+                print : 'Print',
+                exportCSV : 'Export CSV',
                 searchAnyThing : 'Search any thing'
             }
         };
+
+        defaults.exportCSVFileName = 'light table export '+new Date().toDateString();
 
         //append args to defaults
         this.options = { ...defaults,  ...options };
@@ -29,8 +41,7 @@ class LightTable {
             return;
         }
 
-console.log('this.options.selector',this.options.selector);
-        //draw tables
+         //draw tables
        
         elements.forEach(element => {
           
@@ -57,6 +68,7 @@ console.log('this.options.selector',this.options.selector);
             let header = document.createElement('div');
             header.classList.add("lt-table-header");
             wrapper.appendChild(header);
+ 
 
             //move the table html to the wrapper
             let thetable = document.createElement('div');
@@ -99,6 +111,23 @@ console.log('this.options.selector',this.options.selector);
                 });
                
             }
+
+
+            
+            //add actions container to header
+            let headerActions = document.createElement('div');
+            headerActions.classList.add("lt-table-actions");
+            header.appendChild(headerActions);
+
+            //print
+            if(this.options.print){
+                LightTable.#print(headerActions,this.labels);
+            }
+            //csv
+            if(this.options.exportCSV){
+                LightTable.#exportCSV(headerActions,this.labels,this.options);
+            }
+
  
  
             if(this.options.pagination){
@@ -143,6 +172,134 @@ console.log('this.options.selector',this.options.selector);
 
     }
 
+    //print the table action
+    static #exportCSV(headerActions,labels,options){
+      
+        let headerExportCSV = document.createElement('button');
+        headerExportCSV.classList.add("lt-table-actions-exportcsv");
+        headerExportCSV.innerHTML='<span>'+labels.exportCSV+'</span>';
+        headerActions.appendChild(headerExportCSV);
+
+
+     
+        
+
+
+        //trigger click
+        headerExportCSV.addEventListener('click',function(e){
+            const p=e.target.parentElement.parentElement.parentElement.parentElement;
+                let elem = e.target;
+                let target = p.querySelectorAll('table')[0];
+                let page = p.querySelectorAll('.lt-table-toggle-pagination.current')[0].dataset.page;
+ 
+
+                //apply search to show all related data
+                LightTable.#doSearch(p);
+
+                // Variable to store the final csv data
+                var csv_data = [];
+                
+                // Get each row data
+                var rows = target.querySelectorAll('tr');
+                for (var i = 0; i < rows.length; i++) {
+
+                    // Get each column data
+                    var cols = rows[i].querySelectorAll('td,th');
+
+                    // Stores each csv row data
+                    var csvrow = [];
+                    for (var j = 0; j < cols.length; j++) {
+
+                        // Get the text data of each cell of
+                        // a row and push it to csvrow
+                        csvrow.push(cols[j].innerHTML);
+                    }
+
+                    // Combine each column value with comma
+                    csv_data.push(csvrow.join(","));
+                }
+                // combine each row data with new line character
+                csv_data = csv_data.join('\n');
+
+                // Create CSV file object and feed our
+                    // csv_data into it
+                    let CSVFile = new Blob([csv_data], { type: "text/csv" });
+                
+                    // Create to temporary link to initiate
+                    // download process
+                    var temp_link = document.createElement('a');
+                
+                    // Download csv file
+                    temp_link.download = options.exportCSVFileName+".csv";
+                    var url = window.URL.createObjectURL(CSVFile);
+                    temp_link.href = url;
+                
+                    // This link should not be displayed
+                    temp_link.style.display = "none";
+                    document.body.appendChild(temp_link);
+                
+                    // Automatically click the link to trigger download
+                    temp_link.click();
+                    document.body.removeChild(temp_link);
+
+
+
+
+
+                    //do sort
+                    LightTable.#doSort(p);
+                    //go to first page
+                   LightTable.#goToPage(p,page);
+
+        });
+
+
+
+    }
+
+
+    //print the table action
+    static #print(headerActions,labels){
+      
+        let headerPrint = document.createElement('button');
+        headerPrint.classList.add("lt-table-actions-print");
+        headerPrint.innerHTML='<span>'+labels.print+'</span>';
+        headerActions.appendChild(headerPrint);
+
+        //trigger click
+        headerPrint.addEventListener('click',function(e){
+            const p=e.target.parentElement.parentElement.parentElement.parentElement.parentElement;
+                let elem = e.target;
+                let target = p.querySelectorAll('table')[0];
+
+                let printArea = window.open('', 'PRINT', 'height=1000,width=1200');
+
+                printArea.document.write('<html><head><title>' + document.title  + '</title>');
+                printArea.document.write('</head><body >');
+
+
+                let cssContent='<style>';
+                cssContent+='table{ border-collapse: collapse; }';
+                cssContent+='table th,table td {padding:5px; border: 1px solid #000;} ';
+                cssContent+='table tbody *{ color: #000; } ';
+                cssContent+='</style>';
+
+                printArea.document.write(cssContent);
+        
+            
+                printArea.document.write('<h1>' + document.title  + '</h1>');
+                printArea.document.write(target.outerHTML);
+                printArea.document.write('</body></html>');
+
+                printArea.document.close(); // necessary for IE >= 10
+                printArea.focus(); // necessary for IE >= 10*/
+
+                printArea.print();
+            //    printArea.close();
+
+                return true;
+        });
+    }
 
     static #reloadData(p,page){
         //render pagination

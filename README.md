@@ -10,6 +10,8 @@ Light table is a JavaScript library that provides a simple and customizable way 
 - Pagination.
 - Sort columns.
 - Exclude columnd from search
+- Print the table
+- Export the table to CSV file
 
 ## Installation
 
@@ -80,10 +82,21 @@ Call the library
 | selector  | String  | table  | CSS selector e.g. #table,.table,table, div table  |
 | search  | Boolean  | false  | Allow show & hide the search |
 | stickyHead  | Boolean  | false  | Makes table's header positioned accordiong to the normal flow of the document |
+| print  | Boolean  | false  | Allow print table |
+| exportCSV  | Boolean  | false  | Allow export table to CSV file |
+| exportCSVFileName  | String  | light table export {Day short name} {Month short name} {Day} {Year}  | Controll CSV file name  |
 | pagination  | Boolean  | false  | Allow table pagenation |
 | paginationPerPage  | Number  | 10  | Controll how many items shown per page |
 | theme  | String  | black  | Choosing theme, Available black, blue |
-| labels  | Object  | {}  | Strings translations see below available strings |
+| labels  | Object  | {}  | Strings translations see below Strings translations |
+
+## Strings translations
+| Key  | default text |
+| ------------- | ------------- |
+| print  | Print  |
+| exportCSV  | Export CSV  |
+| searchAnyThing  | Search any thing  |
+
 
 ## Contributing
 
