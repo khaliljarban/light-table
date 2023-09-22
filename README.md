@@ -112,4 +112,4 @@ Please make sure to check out our [Roadmap Discussion](https://github.com/khalil
 
 ## License
 
-The code and the documentation are released under the [GPL V2 License](LICENSE).
+The code and the documentation are released under the [GPL V3 License](LICENSE).
