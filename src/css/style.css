@@ -1,4 +1,3 @@
-
 .lt-table button{cursor: pointer;}
 .lt-table table{
     border-collapse: collapse;
@@ -31,7 +30,7 @@
 
 .lt-table th[data-sortable="yes"]{cursor: pointer; position: relative;}
 .lt-table th[data-sortable="yes"]::after{
- content: '*'; display: inline-block;  vertical-align: midd;e;
+ content: '*'; display: inline-block;  vertical-align: middle;
 
 }
 .lt-table-actions{display: flex; gap: 10px;}
