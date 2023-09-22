@@ -172,6 +172,7 @@ table{
 
 p{margin-bottom: 2rem;}
 
+.lt-table button{cursor: pointer;}
 .lt-table table{
     border-collapse: collapse;
 }
@@ -184,10 +185,11 @@ p{margin-bottom: 2rem;}
     top: 0;
     z-index: 1;
 }
-.lt-table button{font-size: 11px; width:20px; height:20px; text-align: ; line-height:20px; padding:0; border:0; margin:0; cursor: pointer;}
-.lt-table button.current{opacity: 0.8;}
+.lt-table-pagination button{font-size: 11px; width:20px; height:20px; text-align: ; line-height:20px; padding:0; border:0; margin:0; cursor: pointer;}
+.lt-table-pagination button.current{opacity: 0.8;}
 .lt-table-header{
     display: flex; justify-content: space-between; margin-bottom: 20px;
+    align-items: center;
 }
 
 .lt-table-footer{
@@ -205,6 +207,9 @@ p{margin-bottom: 2rem;}
  content: '*'; display: inline-block;  vertical-align: midd;e;
 
 }
+.lt-table-actions{display: flex; gap: 10px;}
+.lt-table-actions button{border:0; padding:0 5px}
+.lt-table-actions button span{color:inherit}
 
  
 
@@ -218,6 +223,7 @@ p{margin-bottom: 2rem;}
 .lt-blue table th,.lt-blue table td {
     border: 1px solid #74B6CE;
 }
+.lt-blue .lt-table-actions button,
 .lt-blue .lt-table-pagination button,
 .lt-blue table thead{
     background-color: #096484;
@@ -226,6 +232,7 @@ p{margin-bottom: 2rem;}
 .lt-blue table tbody *{
     color: #4796b3;
 }
+.lt-blue .lt-table-actions button,
 .lt-blue .lt-table-pagination button,
 .lt-blue table thead *{color:#fff;}
 /* theme blue */
@@ -234,6 +241,7 @@ p{margin-bottom: 2rem;}
 .lt-black table th,.lt-black table td {
     border: 1px solid #000;
 }
+.lt-black .lt-table-actions button,
 .lt-black .lt-table-pagination button,
 .lt-black table thead{
     background-color: #000;
@@ -241,6 +249,7 @@ p{margin-bottom: 2rem;}
 .lt-black table tbody *{
     color: #000;
 }
+.lt-black .lt-table-actions button,
 .lt-black .lt-table-pagination button,
 .lt-black table thead *{color:#fff;}
 /* theme black */
