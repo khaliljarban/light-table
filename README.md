@@ -106,7 +106,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Roadmap
 
-Please make sure to check out our [Roadmap Discussion](https://github.com/khaliljarban/ozarqa/issues).
+Please make sure to check out our [Roadmap Discussion](https://github.com/khaliljarban/light-table/issues).
 
 
 
