@@ -569,17 +569,28 @@ class LightTable {
 //index
 
 
+        switch(chart.id){
+            case 'bars':
+                LightTable.#loadChartBars(args); 
+                window.addEventListener('resize',function(){
+                    LightTable.#loadChartBars(args);
+                });
+            break;
+            case 'line':
+                LightTable.#loadChartLine(args); 
+                window.addEventListener('resize',function(){
+                    LightTable.#loadChartLine(args);
+                });
+            break;
+        }
 
-        //load bars
-        LightTable.#loadChartBars(args); 
-
- 
-
-      window.addEventListener('resize',function(){
-        LightTable.#loadChartBars(args);
-      });
+       
+     
 
     }
+
+
+
     static #loadChartBars(args){
 
         let p = args[0];
@@ -588,7 +599,9 @@ class LightTable {
  
  
         const svg = document.getElementById(svgId);
-       // const trs =  p.querySelectorAll('tbody tr');
+        if(!svg){
+            return ;
+        }
 
         //source
         let source = document.querySelectorAll('table[data-id="'+p.dataset.id+'"]')[0];
@@ -789,11 +802,262 @@ class LightTable {
           }
         
  
+ 
+    }
 
-     
+
+    static #loadChartLine(args){
+
+        let p = args[0];
+        let chart = args[1];
+        let svgId = args[2];
+ 
+ 
+        const svg = document.getElementById(svgId);
+        if(!svg){
+            return ;
+        }
+
+        //source
+        let source = document.querySelectorAll('table[data-id="'+p.dataset.id+'"]')[0];
+        let trs =  source.querySelectorAll('tbody tr');
+    
+         
+
+        svg.innerHTML='';
+
+        let data = [];
+        trs.forEach((tr,index) => {
+         
+            console.log(tr.querySelectorAll('td')[chart.x]);
+            if(typeof tr.querySelectorAll('td')[chart.x]!='undefined'
+            && typeof tr.querySelectorAll('td')[chart.y]!='undefined'){
+                const xVal = tr.querySelectorAll('td')[chart.x].textContent;
+                const   yVal = tr.querySelectorAll('td')[chart.y].textContent;
+                const ob = {
+                    label : xVal,
+                    value : yVal
+                };
+                data.push(ob);  
+            }
+        });
+        if(data.length==0){
+            console.warn('data not found in table!');
+            return;
+        }
+ 
+
+        
+        let XList =[];
+        let YList =[];
 
 
-//lt-table-charts
+        let maxAllValueX  = 0  ;
+        let maxAllValueY  = 0  ;
+ 
+      
+             const dataValuesX = data.map(function (item){
+                XList.push(item.label);
+                return item.label;
+            },this);
+
+            const dataValuesY = data.map(function (item) {
+                 YList.push(item.value);
+                return item.value;
+            },this);
+        
+
+
+            
+            maxAllValueX = XList.length;
+
+            const maxValueY = Math.max(...dataValuesY);
+            if(maxValueY>maxAllValueY){
+                maxAllValueY = maxValueY;
+            }
+    
+
+            maxAllValueY+=5;
+    
+             // Calculate the coordinates and dimensions
+            let width =  !chart.hideAxis ? svg.clientWidth - 60 : svg.clientWidth;
+            let height =  !chart.hideAxis ? svg.clientHeight - 60 : svg.clientHeight;
+
+ 
+            let xScale = width / maxAllValueX;
+            let yScale = height / maxAllValueY;
+            
+    
+            
+            //horizintal lines
+            if(chart.horizintalLines){
+                for (let i = 0; i <= maxAllValueY; i += Math.round(maxAllValueY / chart.axisScaleUnit)) {
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+ 
+                    if(!chart.hideAxis){
+                        line.setAttribute('transform', 'translate(30 30)');
+                    }else{
+                        line.setAttribute('transform', 'translate(0 0)');
+                    }
+                    line.setAttribute('x1', 0);
+                    line.setAttribute('y1',height - i * yScale);
+                    line.setAttribute('x2', width);
+                    line.setAttribute('y2', height - i * yScale);
+                    line.setAttribute('stroke', chart.horizintalLinesColors);
+                    line.setAttribute('stroke-width', i===0 ? '0' : '1');
+                    svg.appendChild(line);
+                }
+            }
+    
+    
+   
+    
+                 
+    
+                
+    
+                //visualization group
+                let vGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            
+
+                vGroup.classList.add("lt-chart-visual");
+                if(!chart.hideAxis){
+                    vGroup.setAttribute('transform', 'translate(30 30)');
+                }else{
+                    vGroup.setAttribute('transform', 'translate(0 0)');
+                }
+
+           
+                vGroup.setAttribute('width', width);
+                vGroup.setAttribute('height', height);
+                svg.appendChild(vGroup);
+    
+
+          
+                    
+                    // Create the line path data
+                    const pathData = data
+                        .map((value, index) => `${ index * xScale},${height  - value.value *yScale }`)
+                        .join(' ');
+ 
+                    // Draw the line
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+                    path.setAttribute('points', pathData);
+                    path.setAttribute('fill', 'none');
+                    path.setAttribute('stroke',chart.color);
+                    path.setAttribute('stroke-width', '2');
+                    vGroup.appendChild(path);
+    
+       
+    
+    
+    console.log(!chart.hideAxis);
+            if(!chart.hideAxis){
+    
+        
+    
+ 
+    
+    
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+           
+            group.classList.add("lt-chart-axis");
+            
+            group.setAttribute('transform', 'translate(30 30)');
+           
+            svg.appendChild(group);
+    
+    
+            
+    
+    
+                    
+            // Draw the x-axis
+            const xAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            
+            xAxis.setAttribute('x1', 0);
+            xAxis.setAttribute('y1', height);
+            xAxis.setAttribute('x2', width);
+            xAxis.setAttribute('y2', height);
+            xAxis.setAttribute('stroke', '#787878');
+            xAxis.setAttribute('stroke-width', '1');
+            group.appendChild(xAxis);
+    
+            // Draw the y-axis
+            const yAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            yAxis.setAttribute('x1', 0);
+            yAxis.setAttribute('y1', 0);
+            yAxis.setAttribute('x2', 0);
+            yAxis.setAttribute('y2', height);
+            yAxis.setAttribute('stroke', '#787878');
+            yAxis.setAttribute('stroke-width', '1');
+            group.appendChild(yAxis);
+    
+            // Add labels to x-axis
+             
+            XList.forEach((value,index) => {
+                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                label.setAttribute('x', index * xScale);
+                label.setAttribute('y', height + 15);
+                label.setAttribute('text-anchor', 'middle');
+                label.setAttribute('fill', '#787878');
+                label.textContent = value.toString();
+                group.appendChild(label);
+            });
+    
+            // Add labels to y-axis
+            for (let i = 0; i <= maxAllValueY; i += Math.round(maxAllValueY / chart.axisScaleUnit)) {
+                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                label.setAttribute('x', -5);
+                label.setAttribute('y', height - i * yScale);
+                label.setAttribute('text-anchor', 'end');
+                label.setAttribute('alignment-baseline', 'middle');
+                label.setAttribute('fill', '#787878');
+                label.textContent = i.toString();
+                group.appendChild(label);
+            }
+        
+        }else{
+
+            
+    
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+           
+            vGroup.classList.add("lt-chart-axis");
+            if(!chart.hideAxis){
+                vGroup.setAttribute('transform', 'translate(30 30)');
+            }else{
+                vGroup.setAttribute('transform', 'translate(0 0)');
+            }
+            svg.appendChild(group);
+    
+    
+            
+    
+    
+                    
+            // Draw the x-axis
+            const xAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            
+            xAxis.setAttribute('x1', 0);
+            xAxis.setAttribute('y1', height);
+            xAxis.setAttribute('x2', width);
+            xAxis.setAttribute('y2', height);
+            xAxis.setAttribute('stroke', '#787878');
+            xAxis.setAttribute('stroke-width', '1');
+            group.appendChild(xAxis);
+    
+            // Draw the y-axis
+            const yAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            yAxis.setAttribute('x1', 0);
+            yAxis.setAttribute('y1', 0);
+            yAxis.setAttribute('x2', 0);
+            yAxis.setAttribute('y2', height);
+            yAxis.setAttribute('stroke', '#787878');
+            yAxis.setAttribute('stroke-width', '1');
+            group.appendChild(yAxis);
+            
+        }
     }
 
 }

@@ -149,6 +149,30 @@ Json Object:
     }
 ```
 
+### Line
+
+id : line
+
+Json Object: 
+
+```javascript
+    {
+        id : 'line', // chart name
+        x : 3, //X column index, 0 for the first
+        y : 4, //Y column index
+        color: '#c90000',
+            
+        hover: true, 
+        hoverColor: 'blue', 
+        hideLabel: false, 
+        horizintalLines: true,
+        horizintalLinesColors: '#ccc',
+        spacing: 10,
+        axisScaleUnit: 5,
+        hideAxis: false,
+    }
+```
+
 
 
 ## Contributing

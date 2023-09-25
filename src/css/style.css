@@ -39,6 +39,7 @@
 
 
 
+.lt-table-charts svg text{font-size: 10px;}
 .lt-table-charts svg{
     aspect-ratio: 2 / 1;
     display: block; width: 100%; margin-bottom: 40px;
