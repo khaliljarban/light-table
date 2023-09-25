@@ -76,8 +76,7 @@ Call the library
 ```
 
 
-### Charts settings
-Call the library
+### Charts Example
 ```javascript
    new LightTable({
         selector : '#table3',
@@ -88,12 +87,12 @@ Call the library
                 x : 1, //X column index, 0 for the first column
                 y : 4, //Y column index, 0 for the first column
                 color: '#c90000', //bars color
-                showHorizintalLines: true, //show horizintal lines
+                horizintalLines: true, //show horizintal lines
                 horizintalLinesColors: '#ccc', //horizintal lines color
                 hover: true,  //on hover show label
                 hoverColor: 'blue', //hover lable color
-                barHideLabel: false, //hide bar label
-                barSpacing: 10, //gap between bars
+                hideLabel: false, //hide bar label
+                spacing: 10, //gap between bars
                 axisScaleUnit: 5, // jump unit
                 hideAxis: false,//hide x, y
             }
@@ -129,19 +128,21 @@ Call the library
 
 ### Bars
 id : bars
+
 Json Object: 
+
 ```javascript
     {
         id : 'bars', // chart name, see below available charts
         x : 1, //X column index, 0 for the first column
         y : 4, //Y column index, 0 for the first column
         color: '#c90000', //bars color
-        showHorizintalLines: true, //show horizintal lines
+        horizintalLines: true, //show horizintal lines
         horizintalLinesColors: '#ccc', //horizintal lines color
         hover: true,  //on hover show label
         hoverColor: 'blue', //hover lable color
-        barHideLabel: false, //hide bar label
-        barSpacing: 10, //gap between bars
+        hideLabel: false, //hide bar label
+        spacing: 10, //gap between bars
         axisScaleUnit: 5, // jump unit
         hideAxis: false,//hide x, y
     }

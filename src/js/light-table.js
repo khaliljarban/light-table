@@ -634,12 +634,11 @@ class LightTable {
         let width =  !chart.hideAxis ? svg.clientWidth - 60 : svg.clientWidth;
         let height =  !chart.hideAxis ? svg.clientHeight - 60 : svg.clientHeight;
 
-        let xScale = (width - chart.barSpacing * (data.length - 1)) / data.length;
+        let xScale = (width - chart.spacing * (data.length - 1)) / data.length;
         let yScale = height / maxValue;
  
-        //horizintal lines
-        console.log(chart.showHorizintalLines);
-        if(chart.showHorizintalLines){
+        //horizintal lines 
+        if(chart.horizintalLines){
             // Add labels to y-axis
             for (let i = 1; i <= maxValue; i += Math.round(maxValue / chart.axisScaleUnit)) {
                 const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -687,7 +686,7 @@ class LightTable {
             const barHeight = value * yScale;
          
             const barWidth = xScale;
-            const x = i * (barWidth + chart.barSpacing);
+            const x = i * (barWidth + chart.spacing);
             const y = height - barHeight;
 
  
@@ -719,7 +718,7 @@ class LightTable {
       
        
             // Add label
-            if(!chart.barHideLabel){
+            if(!chart.hideLabel){
               const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
               label.setAttribute('x', x + barWidth / 2);
               label.setAttribute('y', y - 5);
@@ -768,7 +767,7 @@ class LightTable {
   
   
                 const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                label.setAttribute('x', i * (barWidth + chart.barSpacing) + barWidth / 2);
+                label.setAttribute('x', i * (barWidth + chart.spacing) + barWidth / 2);
                 label.setAttribute('y', height + 15);
                 label.setAttribute('text-anchor', 'middle');
                 label.textContent = data[i].label;
