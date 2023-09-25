@@ -19,7 +19,7 @@
 }
 
 .lt-table-footer{
-    display: flex; justify-content: space-between;  
+    display: flex; justify-content: space-between; margin-bottom: 40px;  
 }
 .lt-table-search {display: flex;gap: 10px;} 
 .lt-table-search input{
@@ -37,6 +37,14 @@
 .lt-table-actions button{border:0; padding:0 5px}
 .lt-table-actions button span{color:inherit}
 
+
+
+.lt-table-charts svg{
+    aspect-ratio: 2 / 1;
+    display: block; width: 100%; margin-bottom: 40px;
+}
+.lt-chart-hover{visibility: hidden; opacity: 0;}
+.lt-chart-item:hover .lt-chart-hover{visibility: visible; opacity: 1;}
  
 
 
