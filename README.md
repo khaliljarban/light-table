@@ -126,25 +126,26 @@ Call the library
 
 
 ## Available charts
-| id  | Objct format |
-| ------------- | ------------- |
-| bars  | ```javascript
 
-            {
-                id : 'bars', // chart name, see below available charts
-                x : 1, //X column index, 0 for the first column
-                y : 4, //Y column index, 0 for the first column
-                color: '#c90000', //bars color
-                showHorizintalLines: true, //show horizintal lines
-                horizintalLinesColors: '#ccc', //horizintal lines color
-                hover: true,  //on hover show label
-                hoverColor: 'blue', //hover lable color
-                barHideLabel: false, //hide bar label
-                barSpacing: 10, //gap between bars
-                axisScaleUnit: 5, // jump unit
-                hideAxis: false,//hide x, y
-            }
-```  |
+### Bars
+id : bars
+Json Object: 
+```javascript
+    {
+        id : 'bars', // chart name, see below available charts
+        x : 1, //X column index, 0 for the first column
+        y : 4, //Y column index, 0 for the first column
+        color: '#c90000', //bars color
+        showHorizintalLines: true, //show horizintal lines
+        horizintalLinesColors: '#ccc', //horizintal lines color
+        hover: true,  //on hover show label
+        hoverColor: 'blue', //hover lable color
+        barHideLabel: false, //hide bar label
+        barSpacing: 10, //gap between bars
+        axisScaleUnit: 5, // jump unit
+        hideAxis: false,//hide x, y
+    }
+```
 
 
 
