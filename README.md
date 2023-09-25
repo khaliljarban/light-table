@@ -12,6 +12,7 @@ Light table is a JavaScript library that provides a simple and customizable way 
 - Exclude columnd from search
 - Print the table
 - Export the table to CSV file
+- Convert table to charts
 
 ## Installation
 
