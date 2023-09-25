@@ -76,6 +76,32 @@ Call the library
 ```
 
 
+### Charts settings
+Call the library
+```javascript
+   new LightTable({
+        selector : '#table3',
+        theme : 'black',
+        charts : [
+            {
+                id : 'bars', // chart name, see below available charts
+                x : 1, //X column index, 0 for the first column
+                y : 4, //Y column index, 0 for the first column
+                color: '#c90000', //bars color
+                showHorizintalLines: true, //show horizintal lines
+                horizintalLinesColors: '#ccc', //horizintal lines color
+                hover: true,  //on hover show label
+                hoverColor: 'blue', //hover lable color
+                barHideLabel: false, //hide bar label
+                barSpacing: 10, //gap between bars
+                axisScaleUnit: 5, // jump unit
+                hideAxis: false,//hide x, y
+            }
+        ]
+    });
+```
+
+
 ## Options
 | Key  | type | default value | description |
 | ------------- | ------------- | ------------- | ------------- |
@@ -89,6 +115,7 @@ Call the library
 | paginationPerPage  | Number  | 10  | Controll how many items shown per page |
 | theme  | String  | black  | Choosing theme, Available black, blue |
 | labels  | Object  | {}  | Strings translations see below Strings translations |
+| charts  | Array  | []  | Array of objects |
 
 ## Strings translations
 | Key  | default text |
@@ -96,6 +123,29 @@ Call the library
 | print  | Print  |
 | exportCSV  | Export CSV  |
 | searchAnyThing  | Search any thing  |
+
+
+## Available charts
+| id  | Objct format |
+| ------------- | ------------- |
+| bars  | ```javascript
+
+            {
+                id : 'bars', // chart name, see below available charts
+                x : 1, //X column index, 0 for the first column
+                y : 4, //Y column index, 0 for the first column
+                color: '#c90000', //bars color
+                showHorizintalLines: true, //show horizintal lines
+                horizintalLinesColors: '#ccc', //horizintal lines color
+                hover: true,  //on hover show label
+                hoverColor: 'blue', //hover lable color
+                barHideLabel: false, //hide bar label
+                barSpacing: 10, //gap between bars
+                axisScaleUnit: 5, // jump unit
+                hideAxis: false,//hide x, y
+            }
+```  |
+
 
 
 ## Contributing
